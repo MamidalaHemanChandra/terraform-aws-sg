@@ -3,7 +3,6 @@ resource "aws_security_group" "main" {
   description = var.sg_description
   vpc_id      = var.vpc_id
 
-
   egress {
     from_port        = 0
     to_port          = 0
@@ -11,12 +10,12 @@ resource "aws_security_group" "main" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
-
   tags = merge(
     var.sg_tags,
     local.common_tags,
     {
-    Name = "${local.common_name}-${var.sg_name}"
-  }
+      Name = "${local.common_name}-${var.sg_name}"
+    }
   )
+
 }
